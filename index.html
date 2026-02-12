@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>K6 guide</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: #ccfafad7;
+        }
+        /* ===== NAVBAR ===== */
+        
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+        
+        .navbar-brand img {
+            height: 60px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+        }
+        /* ===== HERO ===== */
+        
+        .hero-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .hero-text h1 {
+            font-size: 60px;
+            font-weight: 700;
+        }
+        
+        .carousel-item img {
+            height: 90vh;
+            object-fit: cover;
+            filter: brightness(55%);
+        }
+        /* ===== SECTION ===== */
+        
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        /* ===== CARD ===== */
+        
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card img {
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .card-body h5 {
+            font-weight: 600;
+        }
+        /* ===== FOOTER ===== */
+        
+        footer {
+            background: #111;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 80px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="logo.png"> K6 guide
+        </a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item"><a class="nav-link" href="#">หน้าหลัก</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">รีวิวร้าน</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item">ร้านอาหาร</a>
+                        <a class="dropdown-item">ค่าเฟ่ & ของหวาน</a>
+                        <a class="dropdown-item">ร้านอาหารปิ้งย่างชาบู</a>
+                    </div>
+                </li>
+
+                <li class="nav-item"><a class="nav-link">บทความ</a></li>
+                <li class="nav-item"><a class="nav-link">ติดต่อ</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <div id="hero" class="carousel slide" data-ride="carousel">
+
+        <div class="hero-text">
+            <h1></h1>
+            <p></p>
+        </div>
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="K6 GUIDE_pages-to-jpg-0001.jpg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="K6 GUIDE_pages-to-jpg-0002.jpg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="freepik__cozy-food-travel-cafe-interior-with-rustic-wooden-__77642.png" class="d-block w-100">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ร้านอาหาร -->
+    <section class="container mt-5 pt-5">
+        <h2 class="section-title">ร้านเด็ดห้ามพลาด</h2>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="ของหวาน/3.คาเฟ่/redlip.jpg">
+                    <div class="card-body">
+                        <h5>Redlipd Cafe</h5>
+                        <p>ร้านคาเฟ่ นั่งชิลตามสไตล์วัยรุ่น</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="หมูกระทะ/2.ฮีลใจหมูกระทะ/472621523_122160221186334218_27481724761868561_n.jpg">
+                    <div class="card-body">
+                        <h5>ฮีลใจหมูกระทะ</h5>
+                        <p>สายชิล สังสรรค์ต้องมาไม่ควรพลาด</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg">
+                    <div class="card-body">
+                        <h5>โรงลาบอุดร</h5>
+                        <p>ทีเด็ดอาหารอีสาน ใครที่เป็นสายแซ่บไม่ควรพลาด</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- คาเฟ่ -->
+    <section class="container">
+        <h2 class="section-title">☕ คาเฟ่&ของหวาน</h2>
+
+        <div class="row">
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="ของหวาน/3.คาเฟ่/474388341_916328213822087_4032154509489356976_n.jpg">
+                    <div class="card-body">
+                        <h5>Redlips Cafe</h5>
+                        <p>คาเฟ่มินิมอลสายถ่ายรูป</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="ของหวาน/5.เดอะ สตอรี่คาเฟ่/493361970_1236368405158485_1241313854688474781_n.jpg">
+                    <div class="card-body">
+                        <h5>เดอะ สตอรี่คาเฟ่</h5>
+                        <p>ค่าเฟ่ที่สายหวานไม่ควรพลาด</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="ของหวาน/1.ใส่นม/77011.jpg">
+                    <div class="card-body">
+                        <h5>Sainom</h5>
+                        <p>คาเฟ่ของหวานอีกหนึ่งที่ ที่น่าไปมากๆ</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer>
+        <p>© 2026 K6 guide | รีวิวกินเที่ยวคลอง 6</p>
+    </footer>
+
+</body>
+
+</html>

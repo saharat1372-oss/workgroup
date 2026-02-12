@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K6 guide</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f8f9fa
+        }
+        /* logo */
+        
+        .navbar-brand img {
+            height: 65px;
+        }
+        
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+        }
+        /* Hero */
+        
+        .hero-slide {
+            height: 80vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        /* Section */
+        
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            color: #c40000;
+            font-weight: bold;
+        }
+        /* Card */
+        
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card:hover {
+            transform: scale(1.03);
+            transition: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logo.png"> K6 GUIDE
+            </a>
+
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ml-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">หน้าหลัก</a>
+                    </li>
+
+                    <!-- รีวิวร้าน Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reviewMenu" role="button" data-toggle="dropdown">
+                รีวิวร้าน
+            </a>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">ร้านอาหารตามสั่ง</a>
+                            <a class="dropdown-item" href="#">ร้านคาเฟ่กาแฟ & ของหวาน</a>
+                            <a class="dropdown-item" href="#">ร้านอาหารปิ้งย่างชาบู</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ติดต่อ</a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+        </div>
+    </nav>
+
+    <!-- HERO SLIDER -->
+    <div id="heroSlider" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1550547660-d9450f859349');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1>K6 GUIDE</h1>
+                        <p>แนะนำของกินเด็ด คลอง 6</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1>Cafe Hopping</h1>
+                        <p>รวมคาเฟ่น่านั่ง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4');">
+                    <div class="hero-overlay"></div>
+                    <div class="hero-content">
+                        <h1>ร้านเด็ด</h1>
+                        <p>สายกินห้ามพลาด</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroSlider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroSlider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+
+    </div>
+    <!-- CONTENT -->
+    <div class="container mt-5">
+
+        <h2 class="section-title">บทความล่าสุด</h2>
+
+        <div class="row mt-4">
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5">
+                    <div class="card-body">
+                        <h5>ร้านอาหาร 1</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2">
+                    <div class="card-body">
+                        <h5>ร้านอาหาร 2</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468">
+                    <div class="card-body">
+                        <h5>ร้านอาหาร 3</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Cafe Hopping</h2>
+
+        <div class="row mt-4">
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+                    <div class="card-body">
+                        <h5>ร้านคาเฟ่ 1</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4">
+                    <div class="card-body">
+                        <h5>ร้านคาเฟ่ 2</h5>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9">
+                    <div class="card-body">
+                        <h5>ร้านคาเฟ่ 3</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</body>
+
+</html>
