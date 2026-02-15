@@ -20,7 +20,7 @@
     <style>
         body {
             font-family: 'Noto Sans Thai', sans-serif;
-            background: #a6c0da;
+            background: #fff;
             padding-top: 80px;
         }
         /* NAVBAR */
@@ -60,11 +60,23 @@
             object-fit: cover;
             filter: brightness(70%);
         }
+        
+        #hero {
+            margin-bottom: 0;
+        }
         /* SECTION */
         
         .section-title {
             font-weight: 700;
             margin-bottom: 30px;
+        }
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #9e0b0f, #7a0003);
+            margin-top: -60px;
+            /* ดึงขึ้นให้ชน */
+            padding-top: 120px;
+            /* เว้นระยะด้านในแทน */
         }
         
         .carousel-item img {
@@ -100,9 +112,44 @@
         }
         
         .btn-search:hover {
-            background: #e63946;
+            background: #4ddb22;
         }
         /* CARD */
+        
+        .highlight-section {
+            background: linear-gradient(135deg, #9e0b0f, #7a0003);
+        }
+        
+        .highlight-card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+            height: 100%;
+        }
+        
+        .highlight-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        
+        .highlight-content {
+            padding: 15px;
+        }
+        
+        .highlight-content h5 {
+            color: #c00000;
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
         
         .card {
             border: none;
@@ -199,7 +246,7 @@
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="#">บทความ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">ติดต่อเรา</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ติดต่อ</a></li>
 
                 </ul>
             </div>
@@ -254,53 +301,50 @@
     </section>
 
     <!-- ร้านเด็ด -->
-    <section class="container mt-5">
-        <h2 class="section-title">ร้านเด็ดห้ามพลาด</h2>
+    <section class="highlight-section">
+        <div class="container py-5">
 
-        <div class="row">
+            <h2 class="text-center text-white mb-4">บทความแนะนำ</h2>
+            <p class="text-center text-white mb-5">
+                ร้านอาหารและสถานที่ที่ผู้เขียนชอบมากกก
+            </p>
 
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <div class="card">
-                    <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid">
-                    <div class="card-body">
-                        <h5>Redlip Cafe</h5>
-                        <p>ร้านคาเฟ่ นั่งชิลตามสไตล์วัยรุ่น</p>
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid" alt="Redlip Cafe">
+                        <div class="card-body">
+                            <h5>Redlip Cafe</h5>
+                            <p>ร้านคาเฟ่ นั่งชิลตามสไตล์วัยรุ่น</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของหวาน/5.เดอะ สตอรี่คาเฟ่/493165128_1233380332123959_3737167905638026809_n.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
+                        <div class="card-body">
+                            <h5>ฮีลใจหมูกระทะ</h5>
+                            <p>สายชิล สังสรรค์ต้องมาไม่ควรพลาด</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของหวาน/1.ใส่นม/77011.jpg" class="img-fluid" alt="Sainom">
+                        <div class="card-body">
+                            <h5>โรงลาบอุดร</h5>
+                            <p>ทีเด็ดอาหารอีสาน สายแซ่บต้องลอง</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของหวาน/4.เป็นหนึ่งนมสด/536189346_122168218730518662_4499121100678073213_n.jpg" class="img-fluid" alt="เป็นหนึ่งนมสด">
+                        <div class="card-body">
+                            <h5>อิ่มรักษ์</h5>
+                            <p>ร้านหมูกระทะยอดนิยม</p>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <div class="card">
-                    <img src="หมูกระทะ/2.ฮีลใจหมูกระทะ/472621523_122160221186334218_27481724761868561_n.jpg" class="img-fluid">
-                    <div class="card-body">
-                        <h5>ฮีลใจหมูกระทะ</h5>
-                        <p>สายชิล สังสรรค์ต้องมาไม่ควรพลาด</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <div class="card">
-                    <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="img-fluid">
-                    <div class="card-body">
-                        <h5>โรงลาบอุดร</h5>
-                        <p>ทีเด็ดอาหารอีสาน สายแซ่บต้องลอง</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-6 col-lg-3 mb-4">
-                <div class="card">
-                    <img src="หมูกระทะ/3.อิ่มรักษ์/517361613_1301518165309645_5936318363610260723_n.jpg" class="img-fluid">
-                    <div class="card-body">
-                        <h5>อิ่มรักษ์</h5>
-                        <p>ร้านหมูกระทะยอดนิยม</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
     </section>
+
 
 
     <!-- คาเฟ่ -->
