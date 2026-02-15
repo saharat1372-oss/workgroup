@@ -4,24 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>K6 guide</title>
+    <title>K6 GUIDE</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Noto Sans Thai', sans-serif;
+            margin: 0;
             background: #fff;
             padding-top: 80px;
+            overflow-x: hidden;
         }
         /* NAVBAR */
         
@@ -42,7 +40,7 @@
         .nav-link::after {
             content: "";
             position: absolute;
-            width: 0%;
+            width: 0;
             height: 2px;
             bottom: 0;
             left: 0;
@@ -55,46 +53,76 @@
         }
         /* HERO */
         
-        .carousel-item img {
-            height: 90vh;
-            object-fit: cover;
-            filter: brightness(70%);
-        }
-        
         #hero {
-            margin-bottom: 0;
-        }
-        /* SECTION */
-        
-        .section-title {
-            font-weight: 700;
-            margin-bottom: 30px;
-        }
-        
-        .highlight-section {
-            background: linear-gradient(135deg, #9e0b0f, #7a0003);
-            margin-top: -60px;
-            /* ดึงขึ้นให้ชน */
-            padding-top: 120px;
-            /* เว้นระยะด้านในแทน */
+            position: relative;
         }
         
         .carousel-item img {
             height: 100vh;
+            object-fit: cover;
+            filter: brightness(75%);
         }
-        /* SEARCH SECTION */
+        
+        #hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(158, 11, 15, 0.8) 60%, #7a0003 100%);
+            z-index: 5;
+        }
+        /* CUSTOM CAROUSEL BUTTON */
+        
+        .custom-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 22px;
+            z-index: 10;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        
+        .prev-btn {
+            left: 40px;
+        }
+        
+        .next-btn {
+            right: 40px;
+        }
+        
+        .custom-carousel-btn:hover {
+            background: #ff4d4d;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 77, 77, 0.6);
+        }
+        /* SEARCH */
         
         .search-section {
-            margin-top: -80px;
+            margin-top: -120px;
             position: relative;
             z-index: 20;
         }
         
         .search-card {
-            background: white;
-            padding: 25px 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .search-card input {
@@ -103,65 +131,30 @@
         }
         
         .btn-search {
-            background: #4681ff;
-            color: white;
+            background: #ff4d4d;
+            color: #fff;
             border: none;
             border-radius: 50px;
-            padding: 12px 25px;
-            font-weight: 600;
         }
         
         .btn-search:hover {
-            background: #4ddb22;
+            background: #cc0000;
+        }
+        /* HIGHLIGHT */
+        
+        .highlight-section {
+            background: linear-gradient(180deg, #7a0003 0%, #9e0b0f 40%, #b30000 100%);
+            padding-top: 150px;
+            padding-bottom: 100px;
         }
         /* CARD */
         
-        .highlight-section {
-            background: linear-gradient(135deg, #9e0b0f, #7a0003);
-        }
-        
-        .highlight-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-            transition: 0.3s;
-            height: 100%;
-        }
-        
-        .highlight-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        
-        .highlight-content {
-            padding: 15px;
-        }
-        
-        .highlight-content h5 {
-            color: #c00000;
-            font-size: 15px;
-            font-weight: 600;
-            margin: 0;
-        }
-        
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-        }
-        
         .card {
             border: none;
-            border-radius: 15px;
+            border-radius: 18px;
             overflow: hidden;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
         .card img {
@@ -169,8 +162,9 @@
             object-fit: cover;
         }
         
-        .card-body h5 {
-            font-weight: 600;
+        .card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
         }
         /* FOOTER */
         
@@ -180,39 +174,22 @@
             padding: 60px 0 30px 0;
             margin-top: 80px;
         }
+        /* MOBILE */
         
-        footer h4,
-        footer h5 {
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        footer a {
-            transition: 0.3s;
-        }
-        
-        footer a:hover {
-            color: #ff4d4d !important;
-            text-decoration: none;
-        }
-        
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 50%;
-        }
-        
-        @media (max-width:576px) {
+        @media(max-width:768px) {
+            .custom-carousel-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+            }
+            .prev-btn {
+                left: 15px;
+            }
+            .next-btn {
+                right: 15px;
+            }
             .card img {
                 height: 160px;
-            }
-            .card-body h5 {
-                font-size: 14px;
-            }
-            .card-body p {
-                font-size: 12px;
-                margin-bottom: 0;
             }
         }
     </style>
@@ -413,7 +390,7 @@
 
             <div class="col-6 col-md-6 col-lg-3 mb-4">
                 <div class="card h-100">
-                    <img src="#" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
+                    <img src="ของคาว/10.ร้านยำเเม่จอย/mom_joy_food.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
                     <div class="card-body">
                         <h5>ร้านยำแม่จอย</h5>
                         <p>-</p>
