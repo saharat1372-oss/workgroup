@@ -4,63 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>K6 guide</title>
 
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <style>
         body {
             font-family: 'Noto Sans Thai', sans-serif;
-            background: #ccfafad7;
+            background: #a6c0da;
+            padding-top: 80px;
         }
-        /* ===== NAVBAR ===== */
+        /* NAVBAR */
         
         .navbar {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(8px);
         }
         
         .navbar-brand img {
-            height: 60px;
+            height: 55px;
         }
         
         .nav-link {
             font-weight: 500;
+            position: relative;
         }
-        /* ===== HERO ===== */
         
-        .hero-text {
+        .nav-link::after {
+            content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            z-index: 10;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: #ff4d4d;
+            transition: 0.3s;
         }
         
-        .hero-text h1 {
-            font-size: 60px;
-            font-weight: 700;
+        .nav-link:hover::after {
+            width: 100%;
         }
+        /* HERO */
         
         .carousel-item img {
             height: 90vh;
             object-fit: cover;
-            filter: brightness(55%);
+            filter: brightness(70%);
         }
-        /* ===== SECTION ===== */
+        /* SECTION */
         
         .section-title {
             font-weight: 700;
             margin-bottom: 30px;
         }
-        /* ===== CARD ===== */
+        
+        .carousel-item img {
+            height: 100vh;
+        }
+        /* SEARCH SECTION */
+        
+        .search-section {
+            margin-top: -80px;
+            position: relative;
+            z-index: 20;
+        }
+        
+        .search-card {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .search-card input {
+            border-radius: 50px;
+            padding: 15px 20px;
+        }
+        
+        .btn-search {
+            background: #4681ff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-weight: 600;
+        }
+        
+        .btn-search:hover {
+            background: #e63946;
+        }
+        /* CARD */
         
         .card {
             border: none;
@@ -83,60 +125,89 @@
         .card-body h5 {
             font-weight: 600;
         }
-        /* ===== FOOTER ===== */
+        /* FOOTER */
         
         footer {
             background: #111;
             color: white;
-            padding: 40px;
-            text-align: center;
+            padding: 60px 0 30px 0;
             margin-top: 80px;
         }
+        
+        footer h4,
+        footer h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        footer a {
+            transition: 0.3s;
+        }
+        
+        footer a:hover {
+            color: #ff4d4d !important;
+            text-decoration: none;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 50%;
+        }
+        
+        @media (max-width:576px) {
+            .card img {
+                height: 160px;
+            }
+            .card-body h5 {
+                font-size: 14px;
+            }
+            .card-body p {
+                font-size: 12px;
+                margin-bottom: 0;
+            }
+        }
     </style>
-
 </head>
 
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <a class="navbar-brand" href="#">
-            <img src="logo.png"> K6 guide
-        </a>
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png"> K6 GUIDE
+            </a>
 
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
 <span class="navbar-toggler-icon"></span>
 </button>
 
-        <div class="collapse navbar-collapse" id="menu">
-            <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ml-auto">
 
-                <li class="nav-item"><a class="nav-link" href="#">หน้าหลัก</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">หน้าหลัก</a></li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">รีวิวร้าน</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item">ร้านอาหาร</a>
-                        <a class="dropdown-item">ค่าเฟ่ & ของหวาน</a>
-                        <a class="dropdown-item">ร้านอาหารปิ้งย่างชาบู</a>
-                    </div>
-                </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown">รีวิวร้าน</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">ร้านอาหาร</a>
+                            <a class="dropdown-item" href="#">คาเฟ่ & ของหวาน</a>
+                            <a class="dropdown-item" href="#">ปิ้งย่าง ชาบู</a>
+                        </div>
+                    </li>
 
-                <li class="nav-item"><a class="nav-link">บทความ</a></li>
-                <li class="nav-item"><a class="nav-link">ติดต่อ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">บทความ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ติดต่อ</a></li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
     </nav>
 
-
     <!-- HERO -->
     <div id="hero" class="carousel slide" data-ride="carousel">
-
-        <div class="hero-text">
-            <h1></h1>
-            <p></p>
-        </div>
 
         <div class="carousel-inner">
 
@@ -153,28 +224,54 @@
             </div>
 
         </div>
+        <!-- ปุ่มเลื่อนซ้าย -->
+        <a class="carousel-control-prev" href="#hero" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+
+        <!-- ปุ่มเลื่อนขวา -->
+        <a class="carousel-control-next" href="#hero" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
     </div>
+    <!-- SEARCH SECTION -->
+    <section class="container search-section">
+        <div class="search-card">
+            <form>
+                <div class="form-row align-items-center">
 
+                    <div class="col-md-9 mb-2">
+                        <input type="text" class="form-control form-control-lg" placeholder=" ค้นหาร้านอาหาร คาเฟ่ หรือคำค้นที่ต้องการ...">
+                    </div>
 
-    <!-- ร้านอาหาร -->
-    <section class="container mt-5 pt-5">
+                    <div class="col-md-3 mb-2">
+                        <button type="submit" class="btn btn-search btn-lg btn-block">Search</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ร้านเด็ด -->
+    <section class="container mt-5">
         <h2 class="section-title">ร้านเด็ดห้ามพลาด</h2>
 
         <div class="row">
 
-            <div class="col-md-4 mb-4">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
                 <div class="card">
-                    <img src="ของหวาน/3.คาเฟ่/redlip.jpg">
+                    <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid">
                     <div class="card-body">
-                        <h5>Redlipd Cafe</h5>
+                        <h5>Redlip Cafe</h5>
                         <p>ร้านคาเฟ่ นั่งชิลตามสไตล์วัยรุ่น</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
                 <div class="card">
-                    <img src="หมูกระทะ/2.ฮีลใจหมูกระทะ/472621523_122160221186334218_27481724761868561_n.jpg">
+                    <img src="หมูกระทะ/2.ฮีลใจหมูกระทะ/472621523_122160221186334218_27481724761868561_n.jpg" class="img-fluid">
                     <div class="card-body">
                         <h5>ฮีลใจหมูกระทะ</h5>
                         <p>สายชิล สังสรรค์ต้องมาไม่ควรพลาด</p>
@@ -182,12 +279,22 @@
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
                 <div class="card">
-                    <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg">
+                    <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="img-fluid">
                     <div class="card-body">
                         <h5>โรงลาบอุดร</h5>
-                        <p>ทีเด็ดอาหารอีสาน ใครที่เป็นสายแซ่บไม่ควรพลาด</p>
+                        <p>ทีเด็ดอาหารอีสาน สายแซ่บต้องลอง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="หมูกระทะ/3.อิ่มรักษ์/517361613_1301518165309645_5936318363610260723_n.jpg" class="img-fluid">
+                    <div class="card-body">
+                        <h5>อิ่มรักษ์</h5>
+                        <p>ร้านหมูกระทะยอดนิยม</p>
                     </div>
                 </div>
             </div>
@@ -197,37 +304,144 @@
 
 
     <!-- คาเฟ่ -->
-    <section class="container">
-        <h2 class="section-title">☕ คาเฟ่&ของหวาน</h2>
+    <section class="container mt-5">
+        <h2 class="section-title">คาเฟ่ & ของหวาน</h2>
 
         <div class="row">
 
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="ของหวาน/3.คาเฟ่/474388341_916328213822087_4032154509489356976_n.jpg">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid" alt="Redlip Cafe">
                     <div class="card-body">
-                        <h5>Redlips Cafe</h5>
-                        <p>คาเฟ่มินิมอลสายถ่ายรูป</p>
+                        <h5>Redlip Cafe</h5>
+                        <p>ร้านคาเฟ่ นั่งชิลตามสไตล์วัยรุ่น</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="ของหวาน/5.เดอะ สตอรี่คาเฟ่/493361970_1236368405158485_1241313854688474781_n.jpg">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของหวาน/5.เดอะ สตอรี่คาเฟ่/493165128_1233380332123959_3737167905638026809_n.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
                     <div class="card-body">
                         <h5>เดอะ สตอรี่คาเฟ่</h5>
-                        <p>ค่าเฟ่ที่สายหวานไม่ควรพลาด</p>
+                        <p>คาเฟ่ที่สายหวานไม่ควรพลาด</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="ของหวาน/1.ใส่นม/77011.jpg">
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของหวาน/1.ใส่นม/77011.jpg" class="img-fluid" alt="Sainom">
                     <div class="card-body">
                         <h5>Sainom</h5>
                         <p>คาเฟ่ของหวานอีกหนึ่งที่ ที่น่าไปมากๆ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของหวาน/4.เป็นหนึ่งนมสด/536189346_122168218730518662_4499121100678073213_n.jpg" class="img-fluid" alt="เป็นหนึ่งนมสด">
+                    <div class="card-body">
+                        <h5>เป็นหนึ่งนมสด</h5>
+                        <p>ร้านของหวานยอดนิยมคลอง 6</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- อาหาร -->
+    <section class="container mt-5">
+        <h2 class="section-title">ร้านอาหาร</h2>
+
+        <div class="row">
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของคาว/2.ตำเเซ่บโพด/bd332ef56fc94bef8f1b0b7aa732dd37.jpg" class="img-fluid" alt="Redlip Cafe">
+                    <div class="card-body">
+                        <h5>ตำเเซ่บโพด</h5>
+                        <p>ร้านอาหารอีสานสุดแซ่บ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="#" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
+                    <div class="card-body">
+                        <h5>ร้านยำแม่จอย</h5>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="img-fluid" alt="Sainom">
+                    <div class="card-body">
+                        <h5>โรงลาบอุดร</h5>
+                        <p>ทีเด็ดอาหารอีสาน สายแซ่บต้องลอง</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="#" class="img-fluid" alt="เป็นหนึ่งนมสด">
+                    <div class="card-body">
+                        <h5>-</h5>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ปิ่งย่าง -->
+    <section class="container mt-5">
+        <h2 class="section-title">ปิ่งย่างชาบู</h2>
+
+        <div class="row">
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="หมูกระทะ/1.ร้านพี่เลี้ยงหมูกระทะ/qu64ff2xvllLFYMgj69-o.jpg" class="img-fluid" alt="Redlip Cafe">
+                    <div class="card-body">
+                        <h5>พี่เลี้ยงหมูกระทะ</h5>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="หมูกระทะ/2.ฮีลใจหมูกระทะ/472621523_122160221186334218_27481724761868561_n.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
+                    <div class="card-body">
+                        <h5>ฮีลใจหมูกระทะ</h5>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="หมูกระทะ/4.โอย่า/465932550_8962923650431596_7606832849439265037_n.jpg" class="img-fluid" alt="Sainom">
+                    <div class="card-body">
+                        <h5>โอย่า</h5>
+                        <p>-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="หมูกระทะ/5.ย่างเนย/487858858_1090501839781252_5299545450031885254_n.jpg" class="img-fluid" alt="เป็นหนึ่งนมสด">
+                    <div class="card-body">
+                        <h5>ย่างเนย</h5>
+                        <p>-</p>
                     </div>
                 </div>
             </div>
@@ -236,8 +450,48 @@
     </section>
 
 
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 K6 guide | รีวิวกินเที่ยวคลอง 6</p>
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                    <h4>K6 guide</h4>
+                    <p>เว็บรีวิวร้านอาหาร คาเฟ่ และที่เที่ยวในคลอง 6 ปทุมธานี </p>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5>เมนู</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">หน้าหลัก</a></li>
+                        <li><a href="#" class="text-white">รีวิวร้าน</a></li>
+                        <li><a href="#" class="text-white">บทความ</a></li>
+                        <li><a href="#" class="text-white">ติดต่อ</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5>ติดต่อเรา</h5>
+                    <p>
+                        <i class="fa fa-map-marker-alt"></i> คลอง 6 ปทุมธานี<br>
+                        <i class="fa fa-envelope"></i> k6guide@email.com<br>
+                        <i class="fa fa-phone"></i> 08X-XXX-XXXX
+                    </p>
+                    <div>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-white mr-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-line fa-lg"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr style="background:white;opacity:0.2;">
+            <div class="text-center">
+                <p class="mb-0">© 2026 K6 guide | รีวิวกินเที่ยวคลอง 6</p>
+            </div>
+
+        </div>
     </footer>
 
 </body>
