@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <style>
@@ -24,7 +25,7 @@
         /* NAVBAR */
         
         .navbar {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(39, 39, 39, 0.9);
             backdrop-filter: blur(8px);
         }
         
@@ -51,16 +52,270 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        .navbar .search-form {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .navbar .search-form .form-control {
+            width: 260px;
+            border-radius: 50px;
+            padding: 8px 12px 8px 38px;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            color: #fff;
+            outline: none;
+        }
+        
+        .navbar .search-form .form-control:focus {
+            box-shadow: none;
+        }
+        
+        .search-dropdown {
+            display: inline-block;
+            position: static;
+            right: auto;
+            top: auto;
+            background: transparent;
+            z-index: 2000;
+        }
+        
+        .btn-white-close {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            border: none;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .btn-white-close:focus {
+            outline: none;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar .search-form .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            font-size: 14px;
+            pointer-events: none;
+        }
+        
+        .navbar .search-form .btn-search {
+            border-radius: 50px;
+            padding: 6px 12px;
+            margin-left: 6px;
+        }
+        
+        .navbar .navbar-nav {
+            align-items: center;
+        }
+        
+        .navbar-brand {
+            margin-left: 8px;
+        }
+        
+        .search-form {
+            margin-left: 12px;
+        }
+        /* NAVBAR hide on scroll */
+        
+        .navbar {
+            transition: transform 0.25s ease, padding 0.25s ease, background 0.25s ease;
+            z-index: 1030;
+        }
+        
+        .navbar.navbar-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .navbar.navbar-shrink {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            background: rgba(0, 0, 0, 0.85);
+        }
+        
+        @media(max-width:768px) {
+            .navbar .search-form .form-control {
+                width: 120px;
+            }
+        }
         /* HERO */
+        /* HERO (full-screen centered style) */
         
         #hero {
             position: relative;
         }
         
-        .carousel-item img {
+        .hero {
             height: 100vh;
+            background-image: url('K6 GUIDE_pages-to-jpg-0001.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: #fff;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.55));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 960px;
+            padding: 0 20px;
+        }
+        
+        .hero-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 110px;
+            line-height: 0.85;
+            margin: 0;
+            text-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }
+        
+        .hero-sub {
+            letter-spacing: 4px;
+            font-weight: 600;
+            margin-top: 12px;
+            margin-bottom: 18px;
+        }
+        
+        .hero-cta {
+            margin-top: 18px;
+        }
+        
+        .hero-cta .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+        }
+        /* right vertical social */
+        
+        .hero-social {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .hero-social a {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 8px 0;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 8px 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+        
+        .btn-order {
+            background: #0fa676;
+            color: #fff;
+            border-radius: 4px;
+            padding: 6px 12px;
+            margin-right: 8px;
+        }
+        
+        @media(max-width:992px) {
+            .hero-title {
+                font-size: 60px;
+            }
+            .hero-social {
+                right: 8px;
+            }
+        }
+        
+        @media(max-width:576px) {
+            .hero-title {
+                font-size: 40px;
+            }
+            .hero-sub {
+                font-size: 14px
+            }
+        }
+        /* FEATURED LAYOUT (big left card + stacked right cards) */
+        
+        .featured-section {
+            padding: 30px 0;
+        }
+        
+        .featured-main {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            background: #fff;
+        }
+        
+        .featured-main img {
+            width: 100%;
+            height: 420px;
             object-fit: cover;
-            filter: brightness(75%);
+            display: block;
+        }
+        
+        .featured-main .meta {
+            padding: 16px;
+        }
+        
+        .featured-side .card {
+            margin-bottom: 18px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .featured-side .card img {
+            height: 120px;
+            object-fit: cover;
+        }
+        /* promo-banner removed per request */
+        /* HORIZONTAL ARTICLE STRIP */
+        
+        .article-strip {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 18px 6px;
+        }
+        
+        .article-strip .card {
+            min-width: 220px;
+            flex: 0 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .article-strip .card img {
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        .article-strip::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .article-strip::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
         }
         /* CUSTOM CAROUSEL BUTTON */
         
@@ -188,7 +443,7 @@
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="logo.png"> K6 GUIDE
             </a>
@@ -214,11 +469,18 @@
                     <li class="nav-item"><a class="nav-link" href="#">บทความ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">ติดต่อเรา</a></li>
 
+                    <li class="nav-item">
+                        <form class="form-inline search-form" action="search.html" method="get">
+                            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                            <input name="q" id="navSearchInput" class="form-control form-control-sm" type="search" placeholder="" aria-label="ค้นหา" autocomplete="off">
+                            <button type="button" id="closeSearchBtn" class="btn btn-white-close d-none ml-2" aria-label="ปิด"><i class="fas fa-times"></i></button>
+                        </form>
+                    </li>
+
                 </ul>
             </div>
         </div>
     </nav>
-
     <!-- HERO -->
     <div id="hero" class="carousel slide" data-ride="carousel">
 
@@ -247,70 +509,93 @@
             <span class="carousel-control-next-icon"></span>
         </a>
     </div>
+    <!-- FEATURED: large left + stacked right (uses existing images/data) -->
+    <section class="featured-section container">
+        <h2 class="mb-3">ร้านยอดฮิตติดเทรนด์ 🔥</h2>
+        <div class="row">
+            <div class="col-lg-8 mb-3">
+                <article class="featured-main">
+                    <img src="K6 GUIDE_pages-to-jpg-0001.jpg" alt="Featured">
+                    <div class="meta">
+                        <h3 class="mb-2">Yoguruto เมนูไหนอร่อย โยเกิร์ตปั่นสุดฮิต อัปเดตเมนู ราคา ปี 2026</h3>
+                        <small class="text-muted">ร้านกาแฟ • 23 ม.ค. 69</small>
+                        <p class="mt-2 text-muted">รวมเมนูยอดนิยมและรีวิวสั้น ๆ เก็บรายละเอียดที่ต้องรู้ก่อนจะไปลอง</p>
+                    </div>
+                </article>
+            </div>
 
-
-    <!-- ร้านเด็ด -->
-    <section class="highlight-section">
-        <div class="container py-5">
-            <!-- SEARCH SECTION -->
-            <section class="container search-section">
-                <div class="search-card">
-                    <form>
-                        <div class="form-row align-items-center">
-
-                            <div class="col-md-9 mb-2">
-                                <input type="text" class="form-control form-control-lg" placeholder=" ค้นหาร้านอาหาร คาเฟ่ หรือคำค้นที่ต้องการ...">
-                            </div>
-
-                            <div class="col-md-3 mb-2">
-                                <button type="submit" class="btn btn-search btn-lg btn-block">Search</button>
-                            </div>
-
-                        </div>
-                    </form>
-                </div>
-            </section><br>
-            <h2 class="text-center text-white mb-4">บทความแนะนำ</h2>
-            <p class="text-center text-white mb-5">
-                ร้านอาหารและสถานที่ที่ผู้เขียนชอบมากกก
-            </p>
-
-            <div class="row">
-                <div class="col-6 col-md-6 col-lg-3 mb-4">
-                    <div class="card h-100"> <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid" alt="Redlip Cafe">
-                        <div class="card-body">
-                            <h5>RED LIPS Cafe & Art Space</h5>
-                            <p>คาเฟ่อาร์ตสุดเก๋ บรรยากาศสงบ มีมุมถ่ายรูปเพียบ เครื่องดื่มและของหวานจัดเสิร์ฟสวย รสชาติกลมกล่อม เหมาะกับการนั่งชิลหรือทำงาน
-                            </p>
-                        </div>
+            <div class="col-lg-4 featured-side">
+                <div class="card">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-5"><img src="รูปใหม่/10.jpg" class="img-fluid" alt="side1"></div>
+                        <div class="col-7 p-3">
+                            <h6 class="mb-1">แจกสูตร ไข่ดาวน้ำมันพริก เมนูจี๊ดสไตล์</h6><small class="text-muted">สูตรอาหาร • 13 ชั่วโมงก่อน</small></div>
                     </div>
                 </div>
-                <div class="col-6 col-md-6 col-lg-3 mb-4">
-                    <div class="card h-100"> <img src="รูปใหม่/10.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
-                        <div class="card-body">
-                            <h5>ฮีลใจหมูกระทะ</h5>
-                            <p>ร้านปิ้งย่างบรรยากาศแคมป์ปิ้งชิลๆ พร้อมไฟประดับอบอุ่นและดนตรีสดให้ฟังเพลิน วัตถุดิบสดครบ ทั้งหมูกระทะและจิ้มจุ่ม เสิร์ฟพร้อมน้ำจิ้มสูตรโคราช เติมไม่อั้น เหมาะกับทุกมื้อพิเศษของคุณ</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-6 col-lg-3 mb-4">
-                    <div class="card h-100"> <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="img-fluid" alt="Sainom">
-                        <div class="card-body">
-                            <h5>โรงลาบอุบล</h5>
-                            <p>ร้านอีสานบรรยากาศโปร่ง โล่ง นั่งสบาย เป็นกันเอง จิ้มจุ่ม ลาบ ยำ ต้ม ทอด แซ่บถึงเครื่อง ราคาเป็นมิตร เหมาะกินกับเพื่อนและครอบครัว</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-6 col-lg-3 mb-4">
-                    <div class="card h-100"> <img src="รูปใหม่/16.jpg" class="img-fluid" alt="เป็นหนึ่งนมสด">
-                        <div class="card-body">
-                            <h5>อิ่มรักษ์</h5>
-                            <p>หมูกระทะบุฟเฟ่ต์ บรรยากาศสบายๆ นั่งสบาย เป็นกันเอง วัตถุดิบสดใหม่ หมูหมักนุ่ม น้ำจิ้มเด็ด ผักเติมไม่อั้น ราคาคุ้มค่าสำหรับคนคลอง6</p>
-                        </div>
+
+                <div class="card">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-5"><img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid" alt="side2"></div>
+                        <div class="col-7 p-3">
+                            <h6 class="mb-1">5 เมนูทำง่าย ส่วนผสมแค่ 3 อย่าง</h6><small class="text-muted">สูตรอาหาร • 5 วันที่แล้ว</small></div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
+
+    <!-- PROMO BANNER removed per user request -->
+
+    <!-- ARTICLE STRIP: horizontally scrollable list (reuse card data) -->
+    <section class="container mt-3">
+        <h5 class="mb-3">รวมร้านอาหารอร่อย</h5>
+        <div class="article-strip">
+            <!-- reuse some existing cards as compact items -->
+            <div class="card">
+                <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="card-img-top" alt="r1">
+                <div class="card-body">
+                    <h6 class="card-title">RED LIPS Cafe & Art Space</h6>
+                    <p class="card-text text-muted small">คาเฟ่อาร์ตสุดเก๋</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="รูปใหม่/10.jpg" class="card-img-top" alt="r2">
+                <div class="card-body">
+                    <h6 class="card-title">ฮีลใจหมูกระทะ</h6>
+                    <p class="card-text text-muted small">ปิ้งย่างบรรยากาศแคมป์ปิ้ง</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="รูปใหม่/63.jpg" class="card-img-top" alt="r3">
+                <div class="card-body">
+                    <h6 class="card-title">มาม่าต้มยำปรุงสด</h6>
+                    <p class="card-text text-muted small">เมนูแซ่บ ราคาดี</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="รูปใหม่/79.jpg" class="card-img-top" alt="r4">
+                <div class="card-body">
+                    <h6 class="card-title">WAKAMAMA</h6>
+                    <p class="card-text text-muted small">ญี่ปุ่นโมเดิร์น</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="card-img-top" alt="r5">
+                <div class="card-body">
+                    <h6 class="card-title">โรงลาบอุบล</h6>
+                    <p class="card-text text-muted small">ร้านอีสานแซ่บ</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ร้านเด็ด (moved down) -->
 
 
 
@@ -459,7 +744,54 @@
             </div>
 
         </div>
+
     </section>
+    <!-- INSERTED: บทความแนะนำ (Highlight Section) moved here -->
+    <section class="highlight-section">
+        <div class="container py-5">
+            <div class="mb-4"></div>
+            <h2 class="text-center text-white mb-4">บทความแนะนำ</h2>
+            <p class="text-center text-white mb-5">
+                ร้านอาหารและสถานที่ที่ผู้เขียนชอบมากกก
+            </p>
+
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของหวาน/3.คาเฟ่/redlip.jpg" class="img-fluid" alt="Redlip Cafe">
+                        <div class="card-body">
+                            <h5>RED LIPS Cafe & Art Space</h5>
+                            <p>คาเฟ่อาร์ตสุดเก๋ บรรยากาศสงบ มีมุมถ่ายรูปเพียบ เครื่องดื่มและของหวานจัดเสิร์ฟสวย รสชาติกลมกล่อม เหมาะกับการนั่งชิลหรือทำงาน
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="รูปใหม่/10.jpg" class="img-fluid" alt="เดอะ สตอรี่คาเฟ่">
+                        <div class="card-body">
+                            <h5>ฮีลใจหมูกระทะ</h5>
+                            <p>ร้านปิ้งย่างบรรยากาศแคมป์ปิ้งชิลๆ พร้อมไฟประดับอบอุ่นและดนตรีสดให้ฟังเพลิน วัตถุดิบสดครบ ทั้งหมูกระทะและจิ้มจุ่ม เสิร์ฟพร้อมน้ำจิ้มสูตรโคราช เติมไม่อั้น เหมาะกับทุกมื้อพิเศษของคุณ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="ของคาว/3.โรงลาบอุดร/474476066_606049328844233_5090465008750899165_n.jpg" class="img-fluid" alt="Sainom">
+                        <div class="card-body">
+                            <h5>โรงลาบอุบล</h5>
+                            <p>ร้านอีสานบรรยากาศโปร่ง โล่ง นั่งสบาย เป็นกันเอง จิ้มจุ่ม ลาบ ยำ ต้ม ทอด แซ่บถึงเครื่อง ราคาเป็นมิตร เหมาะกินกับเพื่อนและครอบครัว</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3 mb-4">
+                    <div class="card h-100"> <img src="รูปใหม่/16.jpg" class="img-fluid" alt="เป็นหนึ่งนมสด">
+                        <div class="card-body">
+                            <h5>อิ่มรักษ์</h5>
+                            <p>หมูกระทะบุฟเฟ่ต์ บรรยากาศสบายๆ นั่งสบาย เป็นกันเอง วัตถุดิบสดใหม่ หมูหมักนุ่ม น้ำจิ้มเด็ด ผักเติมไม่อั้น ราคาคุ้มค่าสำหรับคนคลอง6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
 
 
     <!-- FOOTER -->
@@ -505,6 +837,72 @@
 
         </div>
     </footer>
+
+    <script>
+        (function() {
+            var lastScroll = 0;
+            var navbar = document.querySelector('.navbar');
+            var ticking = false;
+
+            function onScroll() {
+                var current = window.pageYOffset || document.documentElement.scrollTop;
+                if (current > lastScroll && current > 80) {
+                    // scrolling down
+                    navbar.classList.add('navbar-hidden');
+                } else {
+                    // scrolling up
+                    navbar.classList.remove('navbar-hidden');
+                }
+                // add small shrink after scrolling some
+                if (current > 50) navbar.classList.add('navbar-shrink');
+                else navbar.classList.remove('navbar-shrink');
+                lastScroll = current <= 0 ? 0 : current;
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(onScroll);
+                    ticking = true;
+                }
+            });
+        })();
+    </script>
+
+    <script>
+        (function() {
+            var input = document.getElementById('navSearchInput');
+            var closeBtn = document.getElementById('closeSearchBtn');
+            if (!input || !closeBtn) return;
+
+            input.addEventListener('focus', function() {
+                closeBtn.classList.remove('d-none');
+            });
+
+            input.addEventListener('blur', function() {
+                setTimeout(function() {
+                    closeBtn.classList.add('d-none');
+                }, 150);
+            });
+
+            // allow Enter to submit
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    var form = input.closest('form');
+                    if (form) form.submit();
+                }
+            });
+
+            // close button: hide and clear input
+            closeBtn.addEventListener('click', function(ev) {
+                ev.preventDefault();
+                input.value = '';
+                closeBtn.classList.add('d-none');
+                input.blur();
+            });
+        })();
+    </script>
 
 </body>
 
